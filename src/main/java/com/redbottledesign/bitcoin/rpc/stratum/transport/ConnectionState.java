@@ -4,7 +4,6 @@ import com.redbottledesign.bitcoin.rpc.stratum.message.MessageMarshaller;
 import com.redbottledesign.bitcoin.rpc.stratum.message.RequestMessage;
 import com.redbottledesign.bitcoin.rpc.stratum.message.ResponseMessage;
 
-
 /**
  * <p>Interface for the various states of a
  * {@link StatefulMessageTransport}.</p>
