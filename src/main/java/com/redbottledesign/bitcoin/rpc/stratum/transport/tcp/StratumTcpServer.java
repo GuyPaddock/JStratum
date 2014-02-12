@@ -129,6 +129,16 @@ public abstract class StratumTcpServer
     }
 
     /**
+     * Gets the connections that are currently active on this server.
+     *
+     * @return  The active server connections.
+     */
+    protected Cache<String, StratumTcpServerConnection> getConnections()
+    {
+        return this.connections;
+    }
+
+    /**
      * Gets the server socket.
      *
      * @return  The server socket.
