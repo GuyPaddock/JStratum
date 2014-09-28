@@ -15,7 +15,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.transport.ConnectionState;
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */
-public class StratumTcpServerConnection
+public abstract class StratumTcpServerConnection
 extends AbstractTcpMessageTransport
 {
     /**
@@ -40,8 +40,7 @@ extends AbstractTcpMessageTransport
 
     /**
      * Constructor for {@link StratumTcpServerConnection} that initializes the
-     * connection to wrap the specified connected server-side socket and start
-     * in the specified state.
+     * connection to wrap the specified connected server-side socket.
      *
      * @param   server
      *          The server.
@@ -51,28 +50,7 @@ extends AbstractTcpMessageTransport
      */
     public StratumTcpServerConnection(StratumTcpServer server, Socket connectionSocket)
     {
-        this(server, connectionSocket, null);
-    }
-
-    /**
-     * Constructor for {@link StratumTcpServerConnection} that initializes the
-     * connection to wrap the specified connected server-side socket and start
-     * in the specified state.
-     *
-     * @param   server
-     *          The server.
-     *
-     * @param   connectionSocket
-     *          The server connection socket.
-     *
-     * @param   postConnectState
-     *          The state that the connection should enter when the client
-     *          connects.
-     */
-    public StratumTcpServerConnection(StratumTcpServer server, Socket connectionSocket,
-                                      ConnectionState postConnectState)
-    {
-        super(postConnectState);
+        super();
 
         if (connectionSocket == null)
             throw new IllegalArgumentException("connectionSocket cannot be null.");
@@ -124,7 +102,7 @@ extends AbstractTcpMessageTransport
      */
     public void open()
     {
-        ConnectionState postConnectState = this.getPostConnectState();
+        ConnectionState postConnectState = this.createPostConnectState();
 
         if (this.isOpen())
             throw new IllegalStateException("The connection is already open.");

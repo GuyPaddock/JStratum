@@ -39,11 +39,6 @@ extends StatefulMessageTransport
     private final TcpSocketInputThread inThread;
 
     /**
-     * The state that each connection will enter upon receiving a connection from a client.
-     */
-    private ConnectionState postConnectState;
-
-    /**
      * The connection socket.
      */
     private volatile Socket socket;
@@ -53,50 +48,10 @@ extends StatefulMessageTransport
      */
     public AbstractTcpMessageTransport()
     {
-        this(null);
-    }
-
-    /**
-     * Constructor for {@link AbstractTcpMessageTransport} that configures the
-     * transport with the specified post-connection state.
-     *
-     * @param   postConnectState
-     *          The state that the connection should enter when the client
-     *          connects.
-     */
-    public AbstractTcpMessageTransport(ConnectionState postConnectState)
-    {
         super();
-
-        this.setPostConnectState(postConnectState);
 
         this.outThread = new TcpSocketOutputThread(this);
         this.inThread  = new TcpSocketInputThread(this);
-    }
-
-    /**
-     * Sets the state that the connection should enter when the client
-     * connects.
-     *
-     * @param   postConnectState
-     *          The new post-connect state.
-     */
-    public void setPostConnectState(ConnectionState postConnectState)
-    {
-        if (this.isOpen())
-            throw new IllegalStateException("The post-connect state cannot be set once the connection is open.");
-
-        this.postConnectState = postConnectState;
-    }
-
-    /**
-     * Gets the state that the connection will enter when this client connects.
-     *
-     * @return  The post-connection state.
-     */
-    public ConnectionState getPostConnectState()
-    {
-        return this.postConnectState;
     }
 
     /**
@@ -252,6 +207,14 @@ extends StatefulMessageTransport
     {
         this.socket = socket;
     }
+
+    /**
+     * Creates the state that the connection should enter upon being opened to
+     * the remote end.
+     *
+     * @return  The post-connection state.
+     */
+    protected abstract ConnectionState createPostConnectState();
 
     /**
      * {@inheritDoc}
