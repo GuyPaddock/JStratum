@@ -18,7 +18,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.transport.ConnectionState;
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */
-public class StratumTcpClient
+public abstract class StratumTcpClient
 extends AbstractTcpMessageTransport
 {
     /**
@@ -26,20 +26,7 @@ extends AbstractTcpMessageTransport
      */
     public StratumTcpClient()
     {
-        this(null);
-    }
-
-    /**
-     * Constructor for {@link StratumTcpClient} that configures a new client
-     * with the specified post-connection state.
-     *
-     * @param   postConnectState
-     *          The state that the connection should enter when the client
-     *          connects.
-     */
-    public StratumTcpClient(ConnectionState postConnectState)
-    {
-        super(postConnectState);
+        super();
     }
 
     /**
@@ -81,7 +68,7 @@ extends AbstractTcpMessageTransport
     public void connect(InetAddress address, int port)
     throws IOException
     {
-        ConnectionState postConnectState = this.getPostConnectState();
+        ConnectionState postConnectState = this.createPostConnectState();
 
         if (postConnectState == null)
         {

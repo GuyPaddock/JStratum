@@ -13,7 +13,6 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.RemovalCause;
 import com.google.common.cache.RemovalListener;
 import com.google.common.cache.RemovalNotification;
-import com.redbottledesign.bitcoin.rpc.stratum.transport.ConnectionState;
 
 /**
  * <p>A TCP implementation of a Stratum server.</p>
@@ -95,14 +94,9 @@ public abstract class StratumTcpServer
         {
             final Socket                     connectionSocket = this.serverSocket.accept();
             final StratumTcpServerConnection connection       = this.createConnection(connectionSocket);
-            final ConnectionState            postConnectState = this.getPostConnectState(connection);
-
-            if (postConnectState == null)
-                throw new IllegalStateException("postConnectState cannot be null.");
 
             this.acceptConnection(connection);
 
-            connection.setPostConnectState(postConnectState);
             connection.open();
         }
     }
@@ -167,10 +161,7 @@ public abstract class StratumTcpServer
      *
      * @return  The Stratum TCP server connection for the socket.
      */
-    protected StratumTcpServerConnection createConnection(final Socket connectionSocket)
-    {
-        return new StratumTcpServerConnection(this, connectionSocket);
-    }
+    protected abstract StratumTcpServerConnection createConnection(final Socket connectionSocket);
 
     /**
      * <p>Performs any necessary logic to accept the provided connection.</p>
@@ -258,17 +249,6 @@ public abstract class StratumTcpServer
             .removalListener(new ConnectionExpirationListener())
             .build();
     }
-
-    /**
-     * Gets the state that the provided connection should enter upon being
-     * opened.
-     *
-     * @param   connection
-     *          The connection being opened.
-     *
-     * @return  The post-connection state.
-     */
-    protected abstract ConnectionState getPostConnectState(final StratumTcpServerConnection connection);
 
     /**
      * <p>The listener that handles receiving notifications about when
