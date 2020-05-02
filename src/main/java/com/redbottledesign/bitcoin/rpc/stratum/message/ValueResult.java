@@ -3,7 +3,7 @@ package com.redbottledesign.bitcoin.rpc.stratum.message;
 /**
  * <p>{@link Result} handler for a result that's a single value.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @param   <T>
  *          The type of data in the result.

@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * recognized, malformed, or otherwise invalid according to a specific Stratum
  * protocol specification.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */

@@ -24,7 +24,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.MalformedStratumMessageException;
 /**
  * <p>Class for marshalling Stratum messages into and out of JSON format.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */

@@ -16,7 +16,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.transport.StatefulMessageTranspor
 /**
  * <p>Abstract base class for Stratum TCP message transports.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */

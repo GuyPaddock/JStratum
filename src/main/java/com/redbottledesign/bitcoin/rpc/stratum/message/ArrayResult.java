@@ -38,7 +38,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.MalformedStratumMessageException;
  * like the following:</p>
  * {@code ["1DiiVSnksihdpdP1Pex7jghMAZffZiBY9q"]}
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */

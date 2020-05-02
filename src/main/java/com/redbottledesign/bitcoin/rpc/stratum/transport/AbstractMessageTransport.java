@@ -15,7 +15,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.message.ResponseMessage;
  * should only refer to the {@link MessageTransport} interface and never make a
  * direct reference to this class.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  *

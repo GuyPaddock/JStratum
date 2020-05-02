@@ -28,7 +28,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.MalformedStratumMessageException;
  *      invoked takes no parameters.</li>
  * </ul>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (gpaddock@redbottledesign.com)
  */

@@ -6,7 +6,7 @@ import org.json.JSONObject;
  * <p>Special type of request message used by non-TCP transports to poll the
  * remote end for pending requests or responses.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */

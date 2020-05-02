@@ -8,7 +8,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.MalformedStratumMessageException;
  * <p>Factory for transforming a Stratum result from a JSON object into the
  * appropriate {@link Result} object.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */

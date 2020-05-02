@@ -27,7 +27,7 @@ import com.google.common.cache.RemovalNotification;
  * The {@link #onConnectionTimeout(StratumTcpServerConnection)} method is
  * invoked each time that a connection expires.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */
@@ -254,7 +254,7 @@ public abstract class StratumTcpServer
      * <p>The listener that handles receiving notifications about when
      * connections expire.</p>
      *
-     * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+     * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
      *
      * @author Guy Paddock (guy.paddock@redbottledesign.com)
      */

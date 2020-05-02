@@ -7,7 +7,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.message.Message;
  * more messages of the specified type are received over a Stratum
  * {@link MessageTransport}.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @param   <T>
  *          The type of message the listener is handling.

@@ -12,7 +12,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.message.ResponseMessage;
  * <p>A transport is responsible for sending and receiving {@link Message}s
  * over a protocol like HTTP or TCP sockets.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */

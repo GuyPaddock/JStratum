@@ -11,7 +11,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.MalformedStratumMessageException;
  * <p>At a minimum, all Stratum messages have a numeric {@code id} field, but
  * it may be {@code null}.</li>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (gpaddock@redbottledesign.com)
  */

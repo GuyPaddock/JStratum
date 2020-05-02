@@ -13,7 +13,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.transport.ConnectionState;
 /**
  * <p>A generic Stratum TCP socket input thread.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */

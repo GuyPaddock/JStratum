@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
  * messages they accept based on the state of their conversation with the
  * other system.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  *

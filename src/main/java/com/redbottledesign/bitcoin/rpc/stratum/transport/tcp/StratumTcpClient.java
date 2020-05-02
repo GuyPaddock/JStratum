@@ -14,7 +14,7 @@ import com.redbottledesign.bitcoin.rpc.stratum.transport.ConnectionState;
  * <p>A client can only be used for a single connection; after a connection is
  * closed, it cannot be used to connect again.</p>
  *
- * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>Â© 2013 - 2014 RedBottle Design, LLC.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */
