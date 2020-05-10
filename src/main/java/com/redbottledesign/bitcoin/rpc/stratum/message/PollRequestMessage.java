@@ -7,40 +7,36 @@ import org.json.JSONObject;
  * remote end for pending requests or responses.</p>
  *
  * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>© 2020 Inveniem.</p>
  *
- * @author Guy Paddock (guy.paddock@redbottledesign.com)
+ * @author Guy Paddock (guy@inveniem.com)
  */
 public class PollRequestMessage
-extends RequestMessage
-{
-    /**
-     * Default constructor for {@link PollRequestMessage}.
-     */
-    public PollRequestMessage()
-    {
-        super(null, null);
-    }
+extends RequestMessage {
+  /**
+   * Default constructor for {@link PollRequestMessage}.
+   */
+  public PollRequestMessage() {
+    super(null, null);
+  }
 
-    /**
-     * {@inheritDoc}
-     *
-     * <p>This override does nothing, and serves only to defeat the exception
-     * that is otherwise produced by having a {@code null} method name in the
-     * request message.</p>
-     */
-    @Override
-    protected void setMethodName(String methodName)
-    {
-        // Do nothing; defeat exception in base class
-    }
+  /**
+   * {@inheritDoc}
+   *
+   * <p>This override does nothing, and serves only to defeat the exception
+   * that is otherwise produced by having a {@code null} method name in the request message.</p>
+   */
+  @Override
+  protected void setMethodName(final String methodName) {
+    // Do nothing; defeat exception in base class
+  }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public JSONObject toJson()
-    {
-        // Empty object
-        return new JSONObject();
-    }
+  /**
+   * {@inheritDoc}
+   */
+  @Override
+  public JSONObject toJson() {
+    // Empty object
+    return new JSONObject();
+  }
 }
