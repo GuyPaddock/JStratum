@@ -28,6 +28,7 @@ import com.google.common.cache.RemovalNotification;
  * invoked each time that a connection expires.</p>
  *
  * <p>© 2013 - 2014 RedBottle Design, LLC.</p>
+ * <p>© 2020 Inveniem.</p>
  *
  * @author Guy Paddock (guy.paddock@redbottledesign.com)
  */
@@ -171,9 +172,11 @@ public abstract class StratumTcpServer
      */
     protected void acceptConnection(final StratumTcpServerConnection connection)
     {
-        // Default, log-only implementation
         if (LOGGER.isDebugEnabled())
             LOGGER.debug("Connection accepted: " + connection.getConnectionId());
+
+        //noinspection UnstableApiUsage
+        this.connections.put(connection.getConnectionId(), connection);
     }
 
     /**
