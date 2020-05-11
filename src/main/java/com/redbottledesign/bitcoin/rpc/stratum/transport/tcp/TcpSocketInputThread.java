@@ -1,5 +1,6 @@
 package com.redbottledesign.bitcoin.rpc.stratum.transport.tcp;
 
+import com.redbottledesign.bitcoin.rpc.stratum.UnhandledStratumMessageException;
 import com.redbottledesign.bitcoin.rpc.stratum.message.Message;
 import com.redbottledesign.bitcoin.rpc.stratum.message.MessageMarshaller;
 import com.redbottledesign.bitcoin.rpc.stratum.transport.ConnectionState;
@@ -63,19 +64,21 @@ extends Thread {
               LOGGER.trace("Stratum [in]: " + jsonLine);
             }
 
-            messages = marshaller.marshalMessages(jsonLine);
+            try {
+              messages = marshaller.marshalMessages(jsonLine);
 
-            this.transport.receiveMessages(messages);
+              this.transport.receiveMessages(messages);
+            }
+            catch (UnhandledStratumMessageException ex) {
+              this.transport.handleUnsupportedRequest(ex.getUnhandledRequest());
+            }
           }
         }
       }
     } catch (final Exception ex) {
       if (LOGGER.isErrorEnabled()) {
         LOGGER.error(
-          String.format(
-            "Error on connection: %s",
-            ex.getMessage()
-          ),
+          String.format("Error on connection: %s", ex.getMessage()),
           ex
         );
       }

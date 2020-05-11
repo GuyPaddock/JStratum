@@ -3,6 +3,7 @@ package com.redbottledesign.bitcoin.rpc.stratum.transport.tcp;
 import com.redbottledesign.bitcoin.rpc.stratum.message.Message;
 import com.redbottledesign.bitcoin.rpc.stratum.message.RequestMessage;
 import com.redbottledesign.bitcoin.rpc.stratum.message.ResponseMessage;
+import com.redbottledesign.bitcoin.rpc.stratum.message.UnsupportedMethodResponse;
 import com.redbottledesign.bitcoin.rpc.stratum.transport.ConnectionState;
 import com.redbottledesign.bitcoin.rpc.stratum.transport.StatefulMessageTransport;
 import org.slf4j.Logger;
@@ -218,6 +219,19 @@ extends StatefulMessageTransport {
    */
   protected void receiveMessages(List<Message> messages) {
     this.notifyMessageListeners(messages);
+  }
+
+  /**
+   * Notifies the transport when a request  has been received that has not been handled.
+   *
+   * @param request
+   *   The Stratum request that went unhandled.
+   */
+  protected void handleUnsupportedRequest(final RequestMessage request) {
+    final ResponseMessage response =
+      new UnsupportedMethodResponse(request.getId(), request.getMethodName());
+
+    this.sendResponse(response);
   }
 
   /**

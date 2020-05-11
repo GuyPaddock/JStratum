@@ -5,6 +5,7 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.RemovalCause;
 import com.google.common.cache.RemovalListener;
 import com.redbottledesign.bitcoin.rpc.stratum.MalformedStratumMessageException;
+import com.redbottledesign.bitcoin.rpc.stratum.UnhandledStratumMessageException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -136,11 +137,13 @@ public class MessageMarshaller {
    *   the provided JSON message.
    *
    * @throws MalformedStratumMessageException
-   *   If any JSON information is invalid or doesn't match the messages that this marshaller was
+   *   If any JSON given is not a properly-formed Stratum message.
+   * @throws UnhandledStratumMessageException
+   *   If any message given doesn't match any of the types of messages that this marshaller was
    *   expecting or is capable of marshalling.
    */
   public List<Message> marshalMessages(final String jsonString)
-  throws MalformedStratumMessageException {
+  throws MalformedStratumMessageException, UnhandledStratumMessageException {
     final List<Message> results;
 
     try {
@@ -167,11 +170,13 @@ public class MessageMarshaller {
    * JSON message.
    *
    * @throws MalformedStratumMessageException
-   *   If any JSON information is invalid or doesn't match the messages that this marshaller was
+   *   If any JSON given is not a properly-formed Stratum message.
+   * @throws UnhandledStratumMessageException
+   *   If any message given doesn't match any of the types of messages that this marshaller was
    *   expecting or is capable of marshalling.
    */
   public List<Message> marshalMessages(final JSONArray jsonMessages)
-  throws MalformedStratumMessageException {
+  throws MalformedStratumMessageException, UnhandledStratumMessageException {
     final List<Message> results = new LinkedList<>();
 
     for (int messageIndex = 0; messageIndex < jsonMessages.length(); ++messageIndex) {
@@ -197,11 +202,13 @@ public class MessageMarshaller {
    *   message.
    *
    * @throws MalformedStratumMessageException
-   *   If the JSON information is invalid or doesn't match any of the messages that this marshaller
-   *   was expecting or is capable of marshalling.
+   *   If the JSON given is not a properly-formed Stratum message.
+   * @throws UnhandledStratumMessageException
+   *   If the message given doesn't match any of the types of messages that this marshaller was
+   *   expecting or is capable of marshalling.
    */
   public Message marshalMessage(final JSONObject jsonMessage)
-  throws MalformedStratumMessageException {
+  throws MalformedStratumMessageException, UnhandledStratumMessageException {
     final Message result;
 
     if (jsonMessage.has(JSON_MESSAGE_KEY_RESULT)) {
@@ -236,18 +243,20 @@ public class MessageMarshaller {
    *   JSON message.
    *
    * @throws MalformedStratumMessageException
-   *   If the JSON information is invalid or doesn't match any of the requests that this marshaller
-   *   was expecting or is capable of marshalling.
+   *   If the JSON given is not a properly-formed Stratum message.
+   * @throws UnhandledStratumMessageException
+   *   If the message given doesn't match any of the types of messages that this marshaller was
+   *   expecting or is capable of marshalling.
    */
   protected Message marshalRequestMessage(final JSONObject jsonMessage)
-  throws MalformedStratumMessageException {
+  throws MalformedStratumMessageException, UnhandledStratumMessageException {
     final Message                  result;
     final RequestMessage           request     = new RequestMessage(jsonMessage);
     final String                   methodName  = request.getMethodName();
     final Class<? extends Message> requestType = this.requestMethodMap.get(methodName);
 
     if (requestType == null) {
-      throw new MalformedStratumMessageException(methodName, jsonMessage);
+      throw new UnhandledStratumMessageException(request);
     }
     else {
       result = this.marshalMessage(jsonMessage, requestType);
@@ -302,6 +311,7 @@ public class MessageMarshaller {
    * @throws MalformedStratumMessageException
    *   If the JSON information is invalid.
    */
+  @SuppressWarnings("RedundantThrows")
   protected Message marshalMessage(final JSONObject jsonMessage,
                                    final Class<? extends Message> messageType)
   throws MalformedStratumMessageException {
